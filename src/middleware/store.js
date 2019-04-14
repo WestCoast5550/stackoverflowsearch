@@ -2,11 +2,11 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
 import { createBrowserHistory } from "history";
-import AppReducer from "./middleware/ducks";
-import axiosInstance from "./api/axiosInstance";
-import api from "./api/index";
+import AppReducer from "./ducks";
+import axiosInstance from "../api/axiosInstance";
+import api from "../api/index";
 
-import mySaga from "./middleware/sagas";
+import mySaga from "./sagas";
 
 export const history = createBrowserHistory();
 const axios = axiosInstance();
@@ -22,7 +22,6 @@ const middleware = [routerMiddleware(history)];
 
 if (process.env.NODE_ENV === "development") {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
-
   if (typeof devToolsExtension === "function") {
     enhancers.push(devToolsExtension());
   }

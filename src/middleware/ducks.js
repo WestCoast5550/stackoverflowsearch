@@ -34,7 +34,7 @@ export default ducks.createReducer(
     [SEARCH]: state => ({
       ...state,
       results: [],
-      quickLook: [],
+      quicklook: [],
       answers: []
     }),
     [SET_QUERY]: (state, { payload: query }) => ({

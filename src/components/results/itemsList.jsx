@@ -11,7 +11,7 @@ import {
 
 export default ({ results, onQuickLook, disabled, onGetAnswers }) =>
   results.map(item => (
-    <Card className="card">
+    <Card className="card" key={item.question_id}>
       <CardHeader
         title={
           <div
@@ -42,6 +42,7 @@ export default ({ results, onQuickLook, disabled, onGetAnswers }) =>
       <CardActions>
         {item.tags.map(item => (
           <Button
+            key={item}
             size="small"
             color="primary"
             onClick={() => onQuickLook({ type: "tag", value: item })}

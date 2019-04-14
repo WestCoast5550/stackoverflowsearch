@@ -7,7 +7,4 @@ const mapStateToProps = state => ({
   answers: answersSelector(state)
 });
 
-export default connect(
-  mapStateToProps,
-  undefined
-)(results);
+export default connect(mapStateToProps)(results);

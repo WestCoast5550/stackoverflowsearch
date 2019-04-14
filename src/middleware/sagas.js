@@ -11,6 +11,7 @@ import {
 } from "./ducks";
 
 export default function*() {
+  yield put(push("/"));
   yield takeLatest(SEARCH, searchSaga);
   yield takeLatest(QUICK_LOOK, quickLookSaga);
   yield takeLatest(GET_ANSWERS, getAnswersSaga);
@@ -24,7 +25,7 @@ export function* searchSaga({ payload }) {
     yield put(searchSucsess(items));
     yield put(setQuery(payload));
     yield put(push("/results"));
-  }
+  } else console.error("error occured");
 }
 
 export function* quickLookSaga({ payload }) {
@@ -34,7 +35,7 @@ export function* quickLookSaga({ payload }) {
   if (response) {
     const { items } = response;
     yield put(setQuicklook(items));
-  }
+  } else console.error("error occured");
 }
 
 export function* getAnswersSaga({ payload }) {
@@ -44,5 +45,5 @@ export function* getAnswersSaga({ payload }) {
     const { items } = response;
     yield put(setAnswers(items));
     yield put(push("/answers"));
-  }
+  } else console.error("error occured");
 }

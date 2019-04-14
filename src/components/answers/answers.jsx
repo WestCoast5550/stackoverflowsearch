@@ -4,7 +4,7 @@ import "./answers.css";
 
 export default ({ answers }) =>
   answers.map(item => (
-    <Card className="card">
+    <Card className="card" key={item.answer_id}>
       {<div dangerouslySetInnerHTML={{ __html: item.body }} />}
     </Card>
   ));

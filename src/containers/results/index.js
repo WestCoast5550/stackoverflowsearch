@@ -11,17 +11,11 @@ const mapStateToProps = state => ({
   quicklook: quicklookSelector(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  onSearch: payload => {
-    dispatch(search(payload));
-  },
-  onQuickLook: payload => {
-    dispatch(quickLook(payload));
-  },
-  onGetAnswers: payload => {
-    dispatch(getAnswers(payload));
-  }
-});
+const mapDispatchToProps = {
+  onSearch: search,
+  onQuickLook: quickLook,
+  onGetAnswers: getAnswers
+};
 
 export default connect(
   mapStateToProps,
