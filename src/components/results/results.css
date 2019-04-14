@@ -1,0 +1,24 @@
+.card {
+  margin: 40px 0;
+}
+
+.results {
+  padding: 40px 60px;
+  height: 100vh;
+  overflow: scroll;
+  width: 100%;
+}
+
+.quicklook {
+  margin: 40px 60px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.flex {
+  display: flex;
+}
+
+.author:hover {
+  cursor: pointer;
+}

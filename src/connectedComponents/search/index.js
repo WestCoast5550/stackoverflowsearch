@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import Search from "../components/search/search";
+import Search from "../../components/search/search";
 
-import { search } from "./ducks";
+import { search } from "../../middleware/ducks";
 
 const mapDispatchToProps = dispatch => ({
   onSearch: payload => {

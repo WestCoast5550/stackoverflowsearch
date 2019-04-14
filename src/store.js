@@ -1,20 +1,21 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import { connectRouter, routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
-import { routerMiddleware } from "react-router-redux";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import AppReducer from "./middleware/ducks";
 import axiosInstance from "./api/axiosInstance";
 import api from "./api/index";
 
 import mySaga from "./middleware/sagas";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 const axios = axiosInstance();
 const sagaMiddleware = createSagaMiddleware({
   context: {
     api: api(axios)
   }
 });
+
 const enhancers = [];
 const initialState = {};
 const middleware = [routerMiddleware(history)];
@@ -28,7 +29,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const rootReducer = combineReducers({
-  AppReducer
+  App: AppReducer,
+  router: connectRouter(history)
 });
 
 const composedEnhancers = compose(
