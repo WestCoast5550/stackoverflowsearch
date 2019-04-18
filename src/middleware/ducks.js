@@ -23,31 +23,50 @@ export const getAnswers = ducks.createAction(GET_ANSWERS);
 export const SET_ANSWERS = ducks.defineType("SET_ANSWERS");
 export const setAnswers = ducks.createAction(SET_ANSWERS);
 
-const initialState = { results: [], query: "", quicklook: [], answers: [] };
+const initialState = {
+  results: [],
+  query: "",
+  quicklook: [],
+  answers: [],
+  loading: false
+};
 
 export default ducks.createReducer(
   {
     [SEARCH_SUCSESS]: (state, { payload: results }) => ({
       ...state,
-      results
+      results,
+      loading: false
+    }),
+    [QUICK_LOOK]: state => ({
+      ...state,
+      loading: true
     }),
     [SEARCH]: state => ({
       ...state,
       results: [],
       quicklook: [],
-      answers: []
+      answers: [],
+      loading: true
+    }),
+    [GET_ANSWERS]: state => ({
+      ...state,
+      loading: true
     }),
     [SET_QUERY]: (state, { payload: query }) => ({
       ...state,
+      loading: false,
       query
     }),
     [SET_QUCKLOOK]: (state, { payload: quicklook }) => ({
       ...state,
-      quicklook
+      quicklook,
+      loading: false,
     }),
     [SET_ANSWERS]: (state, { payload: answers }) => ({
       ...state,
-      answers
+      answers,
+      loading: false
     })
   },
   initialState

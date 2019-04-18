@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./search.css";
-import { InputBase, Button } from "@material-ui/core";
+import { InputBase, Button, CircularProgress } from "@material-ui/core";
 
 import logo from "../../logo.svg";
 
-export default ({ onSearch }) => {
+export default ({ onSearch, loading }) => {
   const [searchValue, setSearchValue] = useState("");
-  return (
+  return loading ? (
+    <div className="loaderWrapper">
+      <CircularProgress />
+    </div>
+  ) : (
     <form
       onSubmit={event => {
         event.preventDefault();

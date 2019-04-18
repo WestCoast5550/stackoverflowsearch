@@ -15,7 +15,7 @@ export default ({ results, onQuickLook, disabled, onGetAnswers }) =>
       <CardHeader
         title={
           <div
-            tabindex="0"
+            tabIndex="0"
             className={disabled ? "" : "author"}
             onClick={() =>
               disabled ? undefined : onGetAnswers(item.question_id)
@@ -28,7 +28,7 @@ export default ({ results, onQuickLook, disabled, onGetAnswers }) =>
         }
         subheader={
           <div
-            tabindex="0"
+            tabIndex="0"
             className={disabled ? "" : "author"}
             onClick={() =>
               disabled

@@ -1,14 +1,20 @@
 import { connect } from "react-redux";
 import results from "../../components/results/results";
 
-import { resultsSelector, querySelector, quicklookSelector } from "./selectors";
+import {
+  resultsSelector,
+  querySelector,
+  quicklookSelector,
+  loadingSelector
+} from "./selectors";
 
 import { search, quickLook, getAnswers } from "../../middleware/ducks";
 
 const mapStateToProps = state => ({
   results: resultsSelector(state),
   query: querySelector(state),
-  quicklook: quicklookSelector(state)
+  quicklook: quicklookSelector(state),
+  loading: loadingSelector(state)
 });
 
 const mapDispatchToProps = {
