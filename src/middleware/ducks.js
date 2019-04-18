@@ -1,6 +1,6 @@
 import { createDuck } from "redux-duck";
 
-const ducks = createDuck("counter");
+const ducks = createDuck("App");
 
 export const SEARCH = ducks.defineType("SEARCH");
 export const search = ducks.createAction(SEARCH);
@@ -44,9 +44,6 @@ export default ducks.createReducer(
     }),
     [SEARCH]: state => ({
       ...state,
-      results: [],
-      quicklook: [],
-      answers: [],
       loading: true
     }),
     [GET_ANSWERS]: state => ({
@@ -61,7 +58,7 @@ export default ducks.createReducer(
     [SET_QUCKLOOK]: (state, { payload: quicklook }) => ({
       ...state,
       quicklook,
-      loading: false,
+      loading: false
     }),
     [SET_ANSWERS]: (state, { payload: answers }) => ({
       ...state,
